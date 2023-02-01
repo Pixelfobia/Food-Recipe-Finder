@@ -1,50 +1,37 @@
+let searchButton = document.querySelector("#search");
 
-$(document).ready(function () {
+// Add an event to search Edaman
+searchButton.addEventListener("click", (event) => {
+	event.preventDefault();
+	sendApiRequest()
+})
 
-	let searchButton = document.querySelector("#search");
+//fetch data from the API
+async function sendApiRequest() {
+	let userInput = document.querySelector("#search-food").value
+	let appId = "610e31e3"
+	let appKey = "9ccc32eb1e19081d0c574bf4082402cf"
+	let response = await fetch(`https://api.edamam.com/search?app_id=${appId}&app_key=${appKey}&q=${userInput}`);
+	let food = await response.json()
+	getApi(food)
 
-	// Add an event to search Edaman
-	searchButton.addEventListener("click", (event) => {
-		event.preventDefault();
-		sendApiRequest()
-	})
+	//tenor
+	let queryURL = `https://g.tenor.com/v1/search?q=${userInput}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
+	//make an https request fetch will return promise.
+	fetch(queryURL)
+		.then(response => response.json())
+		//will fire off when the server responds.
+		.then(function (response) {
+			console.log(response)
+			let results = response.results;
+			console.log(results[0].url)
+			let gifDiv = `<img class="img-top" alt="gif of your food" src="${results[0].media[0].gif.url}"></img>`
+			$("#images").prepend(gifDiv);
+		})
+}
 
-	//fetch data from the API
-	async function sendApiRequest() {
-		let userInput = document.querySelector("#search-food").value
-		let appId = "610e31e3"
-		let appKey = "9ccc32eb1e19081d0c574bf4082402cf"
-		let response = await fetch(`https://api.edamam.com/search?app_id=${appId}&app_key=${appKey}&q=${userInput}`);
-		let food = await response.json()
-		getApi(food)
-
-		//giphy
-		let queryURL = `https://api.giphy.com/v1/gifs/search?q=${userInput}` +
-			"&api_key=hwqLy9fPptM2iLrGxVgrgPONMjFtOf3S&limit=5";
-		//make an https request fetch will return promise.
-		fetch(queryURL)
-			.then(response => response.json())
-			//will fire off when the server responds.
-			.then(function (response) {
-				let results = response.data;
-				console.log(results)
-				let gifDiv = `<img class="img-top" src="${response[0].images.downsized_small.mp4}">`
-
-				$("#images").prepend(gifDiv);
-			}
-				//we have access to the data.
-				//	.then(function (response) {
-				//	let imageURL = response.data.images.original.url;
-				//let foodImage = $("<img>").addClass(card-img-top);
-				//foodImage.attr("src", imageURL);
-				//foodImage.attr("alt", "");
-
-				//$("#images").prepend(foodImage);
-			)
-	}
-
-	function getApi(food) {
-		document.querySelector("#foodContent").innerHTML = `
+function getApi(food) {
+	document.querySelector("#foodContent").innerHTML = `
 		<div class="card" style="width: 18rem;">
   		<div id="images">
 		</div>
@@ -56,23 +43,4 @@ $(document).ready(function () {
   		</div>
 		</div>
 	`
-	}
-	// Giphy
-	//$("#search").on("click", function () {
-	//		let queryURL = "https://api.giphy.com/v1/gifs/search?q=${userInput}" + &api_key=hwqLy9fPptM2iLrGxVgrgPONMjFtOf3S&limit=5";
-
-	//make an https request fetch will return promise.
-	//	fetch(queryURL)
-	//will fire off when the server responds.
-	//	.then(response => response.json())
-	//we have access to the data.
-	//.then(function (response) {
-	//let imageURL = response.data.images.original.url;
-	//let foodImage = $("<img>");
-	//foodImage.attr("src", imageURL);
-	//foodImage.attr("alt", "");
-
-	//$("#images").prepend(foodImage);
-	//})
-	//})
-});
+}
