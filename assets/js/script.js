@@ -6,7 +6,6 @@ $(document).ready(function () {
 	// Add an event to search Edaman
 	searchButton.addEventListener("click", (event) => {
 		event.preventDefault();
-		console.log("searching...")
 		sendApiRequest()
 	})
 
@@ -16,28 +15,22 @@ $(document).ready(function () {
 		let appId = "610e31e3"
 		let appKey = "9ccc32eb1e19081d0c574bf4082402cf"
 		let response = await fetch(`https://api.edamam.com/search?app_id=${appId}&app_key=${appKey}&q=${userInput}`);
-		console.log(response)
 		let food = await response.json()
-		console.log(food)
 		getApi(food)
 
 		//giphy
 		let queryURL = `https://api.giphy.com/v1/gifs/search?q=${userInput}` +
 			"&api_key=hwqLy9fPptM2iLrGxVgrgPONMjFtOf3S&limit=5";
 		//make an https request fetch will return promise.
-		$.ajax({
-			url: queryURL,
-			method: "GET"
-		})
+		fetch(queryURL)
+			.then(response => response.json())
 			//will fire off when the server responds.
 			.then(function (response) {
 				let results = response.data;
 				console.log(results)
-				for (let i = 0; i < results.length; i++) {
-					let gifDiv = $("<img>").addClass("card-img-top");
+				let gifDiv = `<img class="img-top" src="${response[0].images.downsized_small.mp4}">`
 
-					$("#images").prepend(gifDiv);
-				}
+				$("#images").prepend(gifDiv);
 			}
 				//we have access to the data.
 				//	.then(function (response) {
@@ -52,16 +45,16 @@ $(document).ready(function () {
 
 	function getApi(food) {
 		document.querySelector("#foodContent").innerHTML = `
-	<div class="card" style="width: 18rem;">
-  <div id="images">
-	</div>
-  <div class="card-body">
-    <h5 class="card-title">${food.hits[0].recipe.label}</h5>
-    <p class="card-text">Calories: ${food.hits[0].recipe.calories.toFixed(0)}</p>
+		<div class="card" style="width: 18rem;">
+  		<div id="images">
+		</div>
+  		<div class="card-body">
+    	<h5 class="card-title">${food.hits[0].recipe.label}</h5>
+    	<p class="card-text">Calories: ${food.hits[0].recipe.calories.toFixed(0)}</p>
 		<p class="card-text">Cautions: ${food.hits[0].recipe.cautions[0]}</p>
-    <a href="${food.hits[0].recipe.url}" class="btn btn-primary" target="_blank">Check recipe</a>
-  </div>
-</div>
+    	<a href="${food.hits[0].recipe.url}" class="btn btn-primary" target="_blank">Check recipe</a>
+  		</div>
+		</div>
 	`
 	}
 	// Giphy
