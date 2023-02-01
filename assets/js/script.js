@@ -25,7 +25,7 @@ async function sendApiRequest() {
 			console.log(response)
 			let results = response.results;
 			console.log(results[0].url)
-			let gifDiv = `<img class="img-top" alt="gif of your food" src="${results[0].media[0].gif.url}"></img>`
+			let gifDiv = `<img class="card-img-top" alt="gif of your food" src="${results[0].media[0].gif.url}"></img>`
 			$("#images").prepend(gifDiv);
 		})
 }
