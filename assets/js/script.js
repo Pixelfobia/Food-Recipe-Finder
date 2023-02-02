@@ -5,13 +5,14 @@ pressEnter.addEventListener("keypress", function (event) {
 	}
 })
 
-
+let input = document.getElementById('search-food')
 let searchButton = document.querySelector("#search");
 
 // Add an event to search Edaman
 searchButton.addEventListener("click", (event) => {
 	event.preventDefault();
 	sendApiRequest()
+	
 })
 
 //fetch data from the API
@@ -69,6 +70,7 @@ function getApi(food) {
 		let calories = document.createElement('p')
 		calories.textContent = "Calories: " + recipe.calories.toFixed()
 
+
 		let recipeBtn = document.createElement('button')
 		recipeBtn.textContent = 'View Recipe'
 		recipeBtn.classList.add('recipeBtn')
@@ -102,6 +104,14 @@ function getApi(food) {
 			}
 		}
 	}
+
+
+ singleRecipeDiv.append(title,img,type,dietLabel,calories,recipeBtn)
+ $("#food-container").prepend(singleRecipeDiv)
+ // Ivas code finish
+	input.value = ''
+ }
+	
 
 
 	// document.querySelector("#foodContent").innerHTML = `
