@@ -1,5 +1,5 @@
 let pressEnter = document.querySelector("#search-food");
-pressEnter.addEventListener("keypress", function(event) {
+pressEnter.addEventListener("keypress", function (event) {
 	if (event.key === "Enter") {
 		searchButton.click()
 	}
@@ -42,37 +42,69 @@ async function sendApiRequest() {
 function getApi(food) {
 
 
-	 // Iva's Code start
- let recipeContainer = document.getElementById('food-container')
- recipeContainer.innerHTML = ''
- let recipeArr = [...food.hits]
- console.log(recipeArr);
- for ( let i = 0; i < recipeArr.length; i++) {
-  console.log(recipeArr[i]);
-  let recipe  = recipeArr[i].recipe
-  console.log(recipe);
-  let singleRecipeDiv = document.createElement('div')
-  singleRecipeDiv.classList.add('single')
+	// Iva's Code start
+	let recipeContainer = document.getElementById('food-container')
+	recipeContainer.innerHTML = ''
+	let recipeArr = [...food.hits]
+	console.log(recipeArr);
+	for (let i = 0; i < recipeArr.length; i++) {
+		console.log(recipeArr[i]);
+		let recipe = recipeArr[i].recipe
+		console.log(recipe);
+		let singleRecipeDiv = document.createElement('div')
+		singleRecipeDiv.classList.add('single')
 
-  let title = document.createElement('h5')
-  title.textContent = recipe.label
+		let title = document.createElement('h5')
+		title.textContent = recipe.label
 
-  let img = document.createElement('img')
-  img.src = recipe.image
+		let img = document.createElement('img')
+		img.src = recipe.image
 
-  let type = document.createElement('p')
-  type.textContent = ` Type: ${recipe.cuisineType} / ${recipe.dishType}`
+		let type = document.createElement('p')
+		type.textContent = ` Type: ${recipe.cuisineType} / ${recipe.dishType}`
 
-   let dietLabel = document.createElement('p')
- 
-   recipe.dietLabels.length > 0 ?  dietLabel.textContent = `Diet Label: ${recipe.dietLabels}`: dietLabel.textContent = `Diet Label: N/A`
+		let dietLabel = document.createElement('p')
 
-  let calories = document.createElement('p')
-  calories.textContent = "Calories: " + recipe.calories.toFixed()
+		recipe.dietLabels.length > 0 ? dietLabel.textContent = `Diet Label: ${recipe.dietLabels}` : dietLabel.textContent = `Diet Label: N/A`
 
-  let recipeBtn = document.createElement('button')
-  recipeBtn.textContent = 'View Recipe'
-  recipeBtn.classList.add('recipeBtn')
+		let calories = document.createElement('p')
+		calories.textContent = "Calories: " + recipe.calories.toFixed()
+
+
+		let recipeBtn = document.createElement('button')
+		recipeBtn.textContent = 'View Recipe'
+		recipeBtn.classList.add('recipeBtn')
+
+		singleRecipeDiv.append(title, img, type, dietLabel, calories, recipeBtn)
+		$("#food-container").prepend(singleRecipeDiv)
+		// Ivas code finish 
+
+
+		// Get the modal
+		var modal = document.getElementById("myModal");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on the button, open the modal
+		recipeBtn.addEventListener("click", function () {
+			console.log("wow")
+			modal.style.display = "block";
+		})
+
+		// When the user clicks on <span> (x), close the modal
+		span.addEventListener("click", function () {
+			modal.style.display = "none";
+		})
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function (event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	}
+
 
  singleRecipeDiv.append(title,img,type,dietLabel,calories,recipeBtn)
  $("#food-container").prepend(singleRecipeDiv)
@@ -81,16 +113,17 @@ function getApi(food) {
  }
 	
 
+
 	// document.querySelector("#foodContent").innerHTML = `
 	// 	<div class="card" style="width: 18rem;">
-  	// 	<div id="images">
+	// 	<div id="images">
 	// 	</div>
-  	// 	<div class="card-body">
-    // 	<h5 class="card-title">${food.hits[0].recipe.label}</h5>
-    // 	<p class="card-text">Calories: ${food.hits[0].recipe.calories.toFixed(0)}</p>
+	// 	<div class="card-body">
+	// 	<h5 class="card-title">${food.hits[0].recipe.label}</h5>
+	// 	<p class="card-text">Calories: ${food.hits[0].recipe.calories.toFixed(0)}</p>
 	// 	<p class="card-text">Cautions: ${food.hits[0].recipe.cautions[0]}</p>
-    // 	<a href="${food.hits[0].recipe.url}" class="btn btn-primary" target="_blank">Check recipe</a>
-  	// 	</div>
+	// 	<a href="${food.hits[0].recipe.url}" class="btn btn-primary" target="_blank">Check recipe</a>
+	// 	</div>
 	// 	</div>
 	// `
 }
