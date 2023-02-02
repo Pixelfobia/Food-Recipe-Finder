@@ -53,6 +53,7 @@ function getApi(food) {
 		console.log(recipe);
 		let singleRecipeDiv = document.createElement('div')
 		singleRecipeDiv.classList.add('single')
+		singleRecipeDiv.classList.add(`single${i}`)
 
 		let title = document.createElement('h5')
 		title.textContent = recipe.label
@@ -126,4 +127,4 @@ function getApi(food) {
 	// 	</div>
 	// 	</div>
 	// `
-}
+
