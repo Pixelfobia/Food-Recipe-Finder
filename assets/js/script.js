@@ -5,13 +5,14 @@ pressEnter.addEventListener("keypress", function(event) {
 	}
 })
 
-
+let input = document.getElementById('search-food')
 let searchButton = document.querySelector("#search");
 
 // Add an event to search Edaman
 searchButton.addEventListener("click", (event) => {
 	event.preventDefault();
 	sendApiRequest()
+	
 })
 
 //fetch data from the API
@@ -75,9 +76,10 @@ function getApi(food) {
 
  singleRecipeDiv.append(title,img,type,dietLabel,calories,recipeBtn)
  $("#food-container").prepend(singleRecipeDiv)
- // Ivas code finish 
+ // Ivas code finish
+	input.value = ''
  }
-
+	
 
 	// document.querySelector("#foodContent").innerHTML = `
 	// 	<div class="card" style="width: 18rem;">
