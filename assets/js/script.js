@@ -12,7 +12,7 @@ let searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", (event) => {
 	event.preventDefault();
 	sendApiRequest()
-	
+
 })
 
 //fetch data from the API
@@ -104,15 +104,15 @@ function getApi(food) {
 				modal.style.display = "none";
 			}
 		}
+		singleRecipeDiv.append(title, img, type, dietLabel, calories, recipeBtn)
+		$("#food-container").prepend(singleRecipeDiv)
+		// Ivas code finish
+		input.value = ''
 	}
 
 
- singleRecipeDiv.append(title,img,type,dietLabel,calories,recipeBtn)
- $("#food-container").prepend(singleRecipeDiv)
- // Ivas code finish
-	input.value = ''
- }
-	
+}
+
 
 
 	// document.querySelector("#foodContent").innerHTML = `
