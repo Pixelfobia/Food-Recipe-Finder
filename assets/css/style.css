@@ -9,3 +9,45 @@ header h1 {
 .card {
 	margin: 50px;
 }
+
+/* food-container styling start */
+#food-container {
+ margin: 0 auto;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+.single {
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ margin: 10px;
+ min-width: 300px;
+ max-width: 300px;
+ height: 400px;
+ background-color: aliceblue;
+ border: 3px solid gray;
+ border-radius: 5px;
+}
+
+img {
+ height: 200px;
+}
+
+h5 {
+ text-align: center;
+ margin: 5px 0;
+}
+
+.recipeBtn {
+ width: 50%;
+ position: absolute;
+ bottom: 5px;
+ right: 5px;
+ border-radius: 5px;
+ background-color: rgb(92, 173, 243);
+ color: white;
+ border: none;
+}
+/* food-container styling finish */
