@@ -46,9 +46,9 @@ function getApi(food) {
 	let recipeContainer = document.getElementById('food-container')
 	recipeContainer.innerHTML = ''
 	let recipeArr = [...food.hits]
-	console.log(recipeArr);
+	//console.log(recipeArr);
 	for (let i = 0; i < recipeArr.length; i++) {
-		console.log(recipeArr[i]);
+		//console.log(recipeArr[i]);
 		let recipe = recipeArr[i].recipe
 		console.log(recipe);
 		let singleRecipeDiv = document.createElement('div')
@@ -90,6 +90,8 @@ function getApi(food) {
 		// When the user clicks on the button, open the modal
 		recipeBtn.addEventListener("click", function () {
 			console.log("wow")
+			let recipePreview = $(".recipe-preview")
+			recipePreview.attr("src", `${recipe.url}`)
 			modal.style.display = "block";
 		})
 
