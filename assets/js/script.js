@@ -12,7 +12,7 @@ let searchButton = document.querySelector("#search");
 searchButton.addEventListener("click", (event) => {
 	event.preventDefault();
 	sendApiRequest()
-	
+
 })
 
 //fetch data from the API
@@ -25,18 +25,23 @@ async function sendApiRequest() {
 	getApi(food)
 
 	// //tenor
-	// let queryURL = `https://g.tenor.com/v1/search?q=${userInput}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
+	let queryURL = `https://g.tenor.com/v1/search?q=${userInput}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
 	// //make an https request fetch will return promise.
-	// fetch(queryURL)
-	// 	.then(response => response.json())
-	// 	//will fire off when the server responds.
-	// 	.then(function (response) {
-	// 		console.log(response)
-	// 		let results = response.results;
-	// 		console.log(results[0].url)
-	// 		let gifDiv = `<img class="card-img-top" alt="gif of your food" src="${results[0].media[0].gif.url}"></img>`
-	// 		$("#images").prepend(gifDiv);
-	// 	})
+	fetch(queryURL)
+		.then(response => response.json())
+		// 	//will fire off when the server responds.
+		.then(function (response) {
+			let results = response.results;
+			let randomNumber = Math.floor(Math.random()*8)
+			let randomGif = results[randomNumber].media[0].gif.url
+			console.log(randomGif)
+			$(".gifDiv").empty()
+			$(".gifDiv").append(`
+				<a class="visit-recipe btn btn-info col-3" href="">Visit recipe site</a>
+				<img class="gif col-6" src="${randomGif}"></img>
+				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
+				`)
+		})
 }
 
 function getApi(food) {
@@ -46,11 +51,11 @@ function getApi(food) {
 	let recipeContainer = document.getElementById('food-container')
 	recipeContainer.innerHTML = ''
 	let recipeArr = [...food.hits]
-	console.log(recipeArr);
+	//console.log(recipeArr);
 	for (let i = 0; i < recipeArr.length; i++) {
-		console.log(recipeArr[i]);
+		//console.log(recipeArr[i]);
 		let recipe = recipeArr[i].recipe
-		console.log(recipe);
+		//console.log(recipe);
 		let singleRecipeDiv = document.createElement('div')
 		singleRecipeDiv.classList.add('single')
 		singleRecipeDiv.classList.add(`single${i}`)
@@ -89,8 +94,10 @@ function getApi(food) {
 
 		// When the user clicks on the button, open the modal
 		recipeBtn.addEventListener("click", function () {
-			console.log("wow")
+			let recipePreview = $(".recipe-preview")
+			recipePreview.attr("src", `${recipe.url}`)
 			modal.style.display = "block";
+			$(".gif")
 		})
 
 		// When the user clicks on <span> (x), close the modal
@@ -104,15 +111,15 @@ function getApi(food) {
 				modal.style.display = "none";
 			}
 		}
+		singleRecipeDiv.append(title, img, type, dietLabel, calories, recipeBtn)
+		$("#food-container").prepend(singleRecipeDiv)
+		// Ivas code finish
+		input.value = ''
 	}
 
 
- singleRecipeDiv.append(title,img,type,dietLabel,calories,recipeBtn)
- $("#food-container").prepend(singleRecipeDiv)
- // Ivas code finish
-	input.value = ''
- }
-	
+}
+
 
 
 	// document.querySelector("#foodContent").innerHTML = `
