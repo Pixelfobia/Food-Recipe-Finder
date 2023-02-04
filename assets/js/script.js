@@ -28,14 +28,20 @@ async function sendApiRequest() {
 	let queryURL = `https://g.tenor.com/v1/search?q=${userInput}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
 	// //make an https request fetch will return promise.
 	fetch(queryURL)
-	.then(response => response.json())
-	// 	//will fire off when the server responds.
-	.then(function (response) {
-	let results = response.results;
-	console.log(results[0])
-	$(".gif").empty()
-	$(".gif").append(`<img src="${results[0].media[0].gif.url}"></img>`)
-	})
+		.then(response => response.json())
+		// 	//will fire off when the server responds.
+		.then(function (response) {
+			let results = response.results;
+			let randomNumber = Math.floor(Math.random()*8)
+			let randomGif = results[randomNumber].media[0].gif.url
+			console.log(randomGif)
+			$(".gifDiv").empty()
+			$(".gifDiv").append(`
+				<a class="visit-recipe btn btn-info col-3" href="">Visit recipe site</a>
+				<img class="gif col-6" src="${randomGif}"></img>
+				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
+				`)
+		})
 }
 
 function getApi(food) {
@@ -91,6 +97,7 @@ function getApi(food) {
 			let recipePreview = $(".recipe-preview")
 			recipePreview.attr("src", `${recipe.url}`)
 			modal.style.display = "block";
+			$(".gif")
 		})
 
 		// When the user clicks on <span> (x), close the modal
