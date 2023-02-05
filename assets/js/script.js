@@ -14,7 +14,7 @@ searchButton.addEventListener("click", (event) => {
 	sendApiRequest()
 
 })
-
+var userInput = ""
 //fetch data from the API
 async function sendApiRequest() {
 	let userInput = document.querySelector("#search-food").value
@@ -23,73 +23,55 @@ async function sendApiRequest() {
 	let response = await fetch(`https://api.edamam.com/search?app_id=${appId}&random=true&app_key=${appKey}&q=${userInput}`);
 	let food = await response.json()
 	getApi(food)
-
-	// //tenor
-	let queryURL = `https://g.tenor.com/v1/search?q=${userInput}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
-	// //make an https request fetch will return promise.
-	fetch(queryURL)
-		.then(response => response.json())
-		// 	//will fire off when the server responds.
-		.then(function (response) {
-			let results = response.results;
-			let randomNumber = Math.floor(Math.random()*8)
-			let randomGif = results[randomNumber].media[0].gif.url
-			console.log(randomGif)
-			$(".gifDiv").empty()
-			$(".gifDiv").append(`
-				<a class="visit-recipe btn btn-info col-3" href="">Visit recipe site</a>
-				<img class="gif col-6" src="${randomGif}"></img>
-				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
-				`)
-		})
+	return userInput
 }
 
 function getApi(food) {
 
 
 	// Iva's Code start
-let recipeContainer = document.getElementById('food-container')
- recipeContainer.innerHTML = ''
- let recipeArr = [...food.hits]
- console.log(recipeArr);
- for ( let i = 0; i < recipeArr.length; i++) {
-  console.log(recipeArr[i]);
-  let recipe  = recipeArr[i].recipe
-  console.log(recipe);
-  let singleRecipeDiv = document.createElement('div')
-  singleRecipeDiv.classList.add('single')
+	let recipeContainer = document.getElementById('food-container')
+	recipeContainer.innerHTML = ''
+	let recipeArr = [...food.hits]
+	console.log(recipeArr);
+	for (let i = 0; i < recipeArr.length; i++) {
+		// console.log(recipeArr[i]);
+		let recipe = recipeArr[i].recipe
+		// console.log(recipe);
+		let singleRecipeDiv = document.createElement('div')
+		singleRecipeDiv.classList.add('single')
 
-  let title = document.createElement('h4')
-  title.textContent = recipe.label
+		let title = document.createElement('h4')
+		title.textContent = recipe.label
 
-  let titleDiv = document.createElement('div')
-  titleDiv.classList.add('titleDiv')
-  titleDiv.append(title)
+		let titleDiv = document.createElement('div')
+		titleDiv.classList.add('titleDiv')
+		titleDiv.append(title)
 
-  let imgContainer = document.createElement('div')
-  imgContainer.classList.add('imgContainer')
+		let imgContainer = document.createElement('div')
+		imgContainer.classList.add('imgContainer')
 
-  let img = document.createElement('img')
-  img.src = recipe.image
-  imgContainer.append(img)
+		let img = document.createElement('img')
+		img.src = recipe.image
+		imgContainer.append(img)
 
-  let dataContainer = document.createElement('div')
-  dataContainer.classList.add('dataContainer')
+		let dataContainer = document.createElement('div')
+		dataContainer.classList.add('dataContainer')
 
-  let type = document.createElement('p')
-  type.textContent = ` Type: ${recipe.cuisineType} / ${recipe.dishType}`
+		let type = document.createElement('p')
+		type.textContent = ` Type: ${recipe.cuisineType} / ${recipe.dishType}`
 
-   let dietLabel = document.createElement('p')
-   recipe.dietLabels.length > 0 ?  dietLabel.textContent = `Diet Label: ${recipe.dietLabels}`: dietLabel.textContent = `Diet Label: N/A`
+		let dietLabel = document.createElement('p')
+		recipe.dietLabels.length > 0 ? dietLabel.textContent = `Diet Label: ${recipe.dietLabels}` : dietLabel.textContent = `Diet Label: N/A`
 
-  let calories = document.createElement('p')
-  calories.textContent = "Calories: " + recipe.calories.toFixed()
+		let calories = document.createElement('p')
+		calories.textContent = "Calories: " + recipe.calories.toFixed()
 
-  dataContainer.append(type,dietLabel,calories)
+		dataContainer.append(type, dietLabel, calories)
 
-  let recipeBtn = document.createElement('button')
-  recipeBtn.textContent = 'View Recipe'
-  recipeBtn.classList.add('recipeBtn')
+		let recipeBtn = document.createElement('button')
+		recipeBtn.textContent = 'View Recipe'
+		recipeBtn.classList.add('recipeBtn')
 		// Ivas code finish 
 
 
@@ -101,6 +83,25 @@ let recipeContainer = document.getElementById('food-container')
 
 		// When the user clicks on the button, open the modal
 		recipeBtn.addEventListener("click", function () {
+
+			//tenor
+			console.log(title.textContent)
+			let queryURL = `https://g.tenor.com/v1/search?q=${title.textContent}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
+			//make an https request fetch will return promise.
+			fetch(queryURL)
+				.then(response => response.json())
+				//will fire off when the server responds.
+				.then(function (response) {
+					let results = response.results;
+					let randomNumber = Math.floor(Math.random() * 8)
+					let randomGif = results[randomNumber].media[0].gif.url
+					$(".gifDiv").empty()
+					$(".gifDiv").append(`
+				<a class="visit-recipe btn btn-info col-3" href="">Visit recipe site</a>
+				<img class="gif col-6" src="${randomGif}"></img>
+				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
+				`)
+				})
 			let recipePreview = $(".recipe-preview")
 			recipePreview.attr("src", `${recipe.url}`)
 			modal.style.display = "block";
@@ -118,7 +119,7 @@ let recipeContainer = document.getElementById('food-container')
 				modal.style.display = "none";
 			}
 		}
-  singleRecipeDiv.append(imgContainer,titleDiv,dataContainer,recipeBtn)
+		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer, recipeBtn)
 		$("#food-container").prepend(singleRecipeDiv)
 		// Ivas code finish
 		input.value = ''
