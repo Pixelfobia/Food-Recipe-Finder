@@ -33,7 +33,7 @@ function getApi(food) {
 	let recipeContainer = document.getElementById('food-container')
 	recipeContainer.innerHTML = ''
 	let recipeArr = [...food.hits]
-	console.log(recipeArr);
+	// console.log(recipeArr);
 	for (let i = 0; i < recipeArr.length; i++) {
 		// console.log(recipeArr[i]);
 		let recipe = recipeArr[i].recipe
@@ -74,6 +74,7 @@ function getApi(food) {
 		recipeBtn.classList.add('recipeBtn')
 		// Ivas code finish 
 
+		let recipeUrl = recipe.url
 
 		// Get the modal
 		var modal = document.getElementById("myModal");
@@ -85,8 +86,8 @@ function getApi(food) {
 		recipeBtn.addEventListener("click", function () {
 
 			//tenor
-			console.log(title.textContent)
-			let queryURL = `https://g.tenor.com/v1/search?q=${title.textContent}&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
+			let queryURL = `https://g.tenor.com/v1/search?q=${title.textContent}`+
+			`&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
 			//make an https request fetch will return promise.
 			fetch(queryURL)
 				.then(response => response.json())
@@ -97,7 +98,7 @@ function getApi(food) {
 					let randomGif = results[randomNumber].media[0].gif.url
 					$(".gifDiv").empty()
 					$(".gifDiv").append(`
-				<a class="visit-recipe btn btn-info col-3" href="">Visit recipe site</a>
+				<a class="visit-recipe btn btn-info col-3" href="${recipeUrl}">Visit recipe site</a>
 				<img class="gif col-6" src="${randomGif}"></img>
 				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
 				`)
