@@ -134,29 +134,27 @@ function getApi(food) {
 var modal2 = document.getElementById("favourite-recipes");
 
 // Get the <span> element that closes the modal2
-var span = document.getElementsByClassName("close2");
+var span2 = document.getElementsByClassName("close2");
 
 // Get favourite button
 var favouriteBtn = document.getElementsByClassName("favourite-btn")
 
+// // Get recipes div
+// var recipesDiv = document.gete 
+
 // When the user clicks on the button, open the modal2
 $(favouriteBtn).on("click", function () {
+	if (localStorage.length === 0) {
+		$(".recipesDiv").empty()
+		$(".recipesDiv").append(`<p>No recipes saved yet</p>`)
+	}
 	modal2.style.display = "block";
-	
 })
 
 // When the user clicks on <span> (x), close the modal2
-$(span).on("click", function () {
+$(span2).on("click", function () {
 	modal2.style.display = "none";
 })
-
-// When the user clicks anywhere outside of the modal2, close it
-window.onclick = function (event) {
-	if (event.target == modal2) {
-	console.log("wow")
-		modal2.style.display = "none";
-	}
-}
 
 
 	// document.querySelector("#foodContent").innerHTML = `
