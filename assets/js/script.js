@@ -80,7 +80,7 @@ function getApi(food) {
 		var modal = document.getElementById("myModal");
 
 		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
+		var span = document.getElementsByClassName("close");
 
 		// When the user clicks on the button, open the modal
 		recipeBtn.addEventListener("click", function () {
@@ -110,7 +110,7 @@ function getApi(food) {
 		})
 
 		// When the user clicks on <span> (x), close the modal
-		span.addEventListener("click", function () {
+		$(span).on("click", function () {
 			modal.style.display = "none";
 		})
 
@@ -129,6 +129,34 @@ function getApi(food) {
 
 }
 
+
+// Get the modal2
+var modal2 = document.getElementById("favourite-recipes");
+
+// Get the <span> element that closes the modal2
+var span = document.getElementsByClassName("close2");
+
+// Get favourite button
+var favouriteBtn = document.getElementsByClassName("favourite-btn")
+
+// When the user clicks on the button, open the modal2
+$(favouriteBtn).on("click", function () {
+	modal2.style.display = "block";
+	
+})
+
+// When the user clicks on <span> (x), close the modal2
+$(span).on("click", function () {
+	modal2.style.display = "none";
+})
+
+// When the user clicks anywhere outside of the modal2, close it
+window.onclick = function (event) {
+	if (event.target == modal2) {
+	console.log("wow")
+		modal2.style.display = "none";
+	}
+}
 
 
 	// document.querySelector("#foodContent").innerHTML = `
