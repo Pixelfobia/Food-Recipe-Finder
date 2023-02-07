@@ -196,6 +196,18 @@ darkBtn.addEventListener('click',function() {
  }
 })
 
+// Toggle Switch
+let modetheme = $('.checkbox').click(function(){
+	
+	if($('input.checkbox').is(':checked')){
+		$('.theme').attr('href', './assets/css/dark.css');
+	} else {
+		$('.theme').attr('href', './assets/css/light.css');
+	}
+});
+
+
+
 
 	// document.querySelector("#foodContent").innerHTML = `
 	// 	<div class="card" style="width: 18rem;">
