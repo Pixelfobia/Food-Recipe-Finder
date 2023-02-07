@@ -5,7 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
 
 header h1 {
-	margin-top: 50px;
+	margin-top: 1px;
+	font-weight: 700;
+}
+.logo {
+	background-image: url('../images/foodFinder-logo.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 180px;
+	height: 120px;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .input-group {
