@@ -129,6 +129,7 @@ function getApi(food) {
 
 }
 
+
 // Toggle Switch
 let modetheme = $('.checkbox').click(function(){
 	
@@ -138,6 +139,7 @@ let modetheme = $('.checkbox').click(function(){
 		$('.theme').attr('href', './assets/css/light.css');
 	}
 });
+
 
 
 
