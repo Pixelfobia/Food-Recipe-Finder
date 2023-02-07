@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/light.css" class="theme">
     <title>Food Recipe Finder</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -22,6 +25,17 @@
         <span class="ml-2">Dark</span>
     </nav>
     <header>
+        <button class="btn btn-info m-2 favourite-btn">Favourite Recipes</button>
+        <i class="fas fa-moon fa-2x"></i>
+        <div id="favourite-recipes" class="modal2">
+            <!-- Modal content -->
+            <div class="modal2-content">
+                <span class="close2">&times;</span>
+                <div class="recipesDiv container">Some text in the Modal..</div>
+            </div>
+
+        </div>
+
         <div class="logo"></div>
         <h1 class="col text-center">FoodFinder</h1>
     </header>

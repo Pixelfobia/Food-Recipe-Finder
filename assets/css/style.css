@@ -166,6 +166,25 @@ h4 {
  font-family: 'Roboto Mono', monospace;
 }
 
+.likeBtn {
+ width: 30%;
+ padding: 8px;
+ margin: 5px;
+ position: absolute;
+ bottom: 25px;
+ left: 15px;
+ border-radius: 25px;
+ border: 2px solid orangered;
+ color: orangered;
+}
+
+.liked {
+ border: none;
+ padding: 10px;
+ background-color: orangered;
+ color: white;
+}
+
 .recipeBtn {
  width: 50%;
  padding: 10px;
@@ -188,6 +207,10 @@ h4 {
  font-weight: bold;
 }
 
+.dark {
+ background-color: rgb(87, 83, 83); 
+}
+
 /* food-container styling finish */
 
 /* The Modal (background) */
@@ -196,7 +219,7 @@ h4 {
 	/* Hidden by default */
 	position: fixed;
 	/* Stay in place */
-	z-index: 1;
+	z-index: 2;
 	/* Sit on top */
 	left: 0;
 	top: 0;
@@ -223,8 +246,30 @@ h4 {
 	/* Could be more or less, depending on screen size */
 }
 
+.modal2 {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 30%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.modal2-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 100%;
+}
+
 /* The Close Button */
-.close {
+.close, .close2 {
 	color: #aaa;
 	float: right;
 	font-size: 28px;
@@ -232,7 +277,9 @@ h4 {
 }
 
 .close:hover,
-.close:focus {
+.close2:hover,
+.close:focus,
+.close2:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
