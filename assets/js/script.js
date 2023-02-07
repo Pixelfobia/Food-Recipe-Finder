@@ -176,6 +176,10 @@ let darkBtn = document.querySelector('.fas')
 
 let darkOn = localStorage.getItem('darkOn')
 
+if(darkOn === 'enabled') {
+ body.classList.add('dark')
+ localStorage.setItem('darkOn','enabled')
+}
 
 darkBtn.addEventListener('click',function() {
  darkOn = localStorage.getItem('darkOn')
