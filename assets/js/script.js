@@ -170,6 +170,28 @@ $(span2).on("click", function () {
 	modal2.style.display = "none";
 })
 
+// Add dark mode
+let body = document.querySelector('body')
+let darkBtn = document.querySelector('.fas')
+
+let darkOn = localStorage.getItem('darkOn')
+
+
+darkBtn.addEventListener('click',function() {
+ darkOn = localStorage.getItem('darkOn')
+
+ if(darkOn !== 'enabled') {
+  console.log('dark on');
+  body.classList.add('dark')
+  darkBtn.style.color = 'white'
+  localStorage.setItem('darkOn','enabled')
+ }else{
+   body.classList.remove('dark')
+   darkBtn.style.color = 'black'
+   localStorage.setItem('darkOn',null)
+ }
+})
+
 
 	// document.querySelector("#foodContent").innerHTML = `
 	// 	<div class="card" style="width: 18rem;">
