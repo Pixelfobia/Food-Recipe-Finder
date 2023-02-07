@@ -98,12 +98,14 @@ function getApi(food) {
 					let randomGif = results[randomNumber].media[0].gif.url
 					$(".gifDiv").empty()
 					$(".gifDiv").append(`
-						<a class="visit-recipe btn btn-info col-3" href="${recipeUrl}">Visit recipe site</a>
+						<a class="visit-recipe btn btn-info col-3" href="${recipeUrl}">Visit recipe: ${title.textContent}</a>
 						<img class="gif col-6" src="${randomGif}"></img>
 						<a class="add-favourite btn btn-info col-3">Add to favourites</a>
 					`)
 					$(".add-favourite").on("click", function() {
-						addFavourite()
+						console.log(title.textContent)
+						console.log(recipeUrl)
+						localStorage.setItem("recipes", [title.textContent, recipeUrl])
 					})
 				})
 			let recipePreview = $(".recipe-preview")
@@ -130,10 +132,6 @@ function getApi(food) {
 	}
 
 
-}
-
-function addFavourite() {
-	console.log("wow")
 }
 
 // Get the modal2
