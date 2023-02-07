@@ -24,7 +24,7 @@
 
 ### Links
 
-* You can see deployed FoodFinder [here](https://skwiera-magic.github.io/knowledge-quiz)
+* You can see deployed FoodFinder [here](https://pixelfobia.github.io/Food-Recipe-Finder/)
 
 ## Authors
 - KodeIva - [GitHub](https://github.com/KodeIva)
