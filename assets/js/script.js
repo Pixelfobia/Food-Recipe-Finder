@@ -69,6 +69,22 @@ function getApi(food) {
 
 		dataContainer.append(type, dietLabel, calories)
 
+		///////
+		let likeBtn = document.createElement('button')
+  likeBtn.textContent = 'Like'
+  likeBtn.classList.add('likeBtn')
+
+		 likeBtn.addEventListener('click', function() {
+				likeBtn.classList.toggle('liked')
+   if(likeBtn.innerHTML === 'Like') {
+    likeBtn.innerHTML = 'Liked'
+   }
+   else if(likeBtn.innerHTML === 'Liked') {
+    likeBtn.innerHTML = 'Like'
+   }
+ })
+		//////
+
 		let recipeBtn = document.createElement('button')
 		recipeBtn.textContent = 'View Recipe'
 		recipeBtn.classList.add('recipeBtn')
@@ -120,13 +136,11 @@ function getApi(food) {
 				modal.style.display = "none";
 			}
 		}
-		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer, recipeBtn)
+		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer,likeBtn, recipeBtn)
 		$("#food-container").prepend(singleRecipeDiv)
 		// Ivas code finish
 		input.value = ''
 	}
-
-
 }
 
 
