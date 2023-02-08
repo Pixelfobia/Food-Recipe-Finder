@@ -246,30 +246,8 @@ h4 {
 	/* Could be more or less, depending on screen size */
 }
 
-.modal2 {
-	display: none;
-	position: absolute;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 30%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Modal Content/Box */
-.modal2-content {
-	background-color: #fefefe;
-	margin: 15% auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 100%;
-}
-
 /* The Close Button */
-.close, .close2 {
+.close {
 	color: #aaa;
 	float: right;
 	font-size: 28px;
@@ -277,9 +255,7 @@ h4 {
 }
 
 .close:hover,
-.close2:hover,
-.close:focus,
-.close2:focus {
+.close:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
@@ -289,10 +265,12 @@ h4 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 
 .gifDiv a {
 	max-height: 40px;
+	margin-top: 10px;
 }
 
 .gif {
@@ -300,5 +278,4 @@ h4 {
 	max-width: 400px;
 	height: auto;
 	max-height: 480px;
-
 }

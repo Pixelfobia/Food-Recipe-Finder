@@ -66,19 +66,19 @@ function getApi(food) {
 
 		dataContainer.append(type, dietLabel, calories)
 
-		let likeBtn = document.createElement('button')
-		likeBtn.textContent = 'Like'
-		likeBtn.classList.add('likeBtn')
+		// let likeBtn = document.createElement('button')
+		// likeBtn.textContent = 'Like'
+		// likeBtn.classList.add('likeBtn')
 
-		likeBtn.addEventListener('click', function () {
-			likeBtn.classList.toggle('liked')
-			if (likeBtn.innerHTML === 'Like') {
-				likeBtn.innerHTML = 'Liked'
-			}
-			else if (likeBtn.innerHTML === 'Liked') {
-				likeBtn.innerHTML = 'Like'
-			}
-		})
+		// likeBtn.addEventListener('click', function () {
+		// 	likeBtn.classList.toggle('liked')
+		// 	if (likeBtn.innerHTML === 'Like') {
+		// 		likeBtn.innerHTML = 'Liked'
+		// 	}
+		// 	else if (likeBtn.innerHTML === 'Liked') {
+		// 		likeBtn.innerHTML = 'Like'
+		// 	}
+		// })
 
 		let recipeBtn = document.createElement('button')
 		recipeBtn.textContent = 'View Recipe'
@@ -104,9 +104,8 @@ function getApi(food) {
 					let randomGif = results[randomNumber].media[0].gif.url
 					$(".gifDiv").empty()
 					$(".gifDiv").append(`
-				<a class="visit-recipe btn btn-info col-3" href="${recipeUrl}">Visit recipe site</a>
-				<img class="gif col-6" src="${randomGif}"></img>
-				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
+				<img class="gif row" src="${randomGif}"></img>
+				<a class="visit-recipe btn btn-info row" href="${recipeUrl}">Visit recipe: ${title.textContent}</a>
 				`)
 				})
 			let recipePreview = $(".recipe-preview")
@@ -124,36 +123,14 @@ function getApi(food) {
 				modal.style.display = "none";
 			}
 		}
-		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer, likeBtn, recipeBtn)
+		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer,
+			 // likeBtn, 
+			 recipeBtn)
 		$("#food-container").prepend(singleRecipeDiv)
 		// Ivas code finish
 		input.value = ''
 	}
 }
-
-
-// Get the modal2
-var modal2 = document.getElementById("favourite-recipes");
-
-// Get the <span> element that closes the modal2
-var span2 = document.getElementsByClassName("close2");
-
-// Get favourite button
-var favouriteBtn = document.getElementsByClassName("favourite-btn")
-
-// When the user clicks on the button, open the modal2
-$(favouriteBtn).on("click", function () {
-	if (localStorage.length === 0) {
-		$(".recipesDiv").empty()
-		$(".recipesDiv").append(`<p>No recipes saved yet</p>`)
-	}
-	modal2.style.display = "block";
-})
-
-// When the user clicks on <span> (x), close the modal2
-$(span2).on("click", function () {
-	modal2.style.display = "none";
-})
 
 // Add dark mode
 let body = document.querySelector('body')
