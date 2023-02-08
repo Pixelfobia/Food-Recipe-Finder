@@ -14,16 +14,17 @@ searchButton.addEventListener("click", (event) => {
 	sendApiRequest()
 
 })
-var userInput = ""
+var gifDis = ""
 //fetch data from the API
 async function sendApiRequest() {
 	let userInput = document.querySelector("#search-food").value
+	gifDis = userInput
 	let appId = "610e31e3"
 	let appKey = "9ccc32eb1e19081d0c574bf4082402cf"
 	let response = await fetch(`https://api.edamam.com/search?app_id=${appId}&random=true&app_key=${appKey}&q=${userInput}`);
 	let food = await response.json()
 	getApi(food)
-	return userInput
+	return gifDis
 }
 
 function getApi(food) {
@@ -33,11 +34,8 @@ function getApi(food) {
 	let recipeContainer = document.getElementById('food-container')
 	recipeContainer.innerHTML = ''
 	let recipeArr = [...food.hits]
-	// console.log(recipeArr);
 	for (let i = 0; i < recipeArr.length; i++) {
-		// console.log(recipeArr[i]);
 		let recipe = recipeArr[i].recipe
-		// console.log(recipe);
 		let singleRecipeDiv = document.createElement('div')
 		singleRecipeDiv.classList.add('single')
 
@@ -69,41 +67,34 @@ function getApi(food) {
 
 		dataContainer.append(type, dietLabel, calories)
 
-		///////
-		let likeBtn = document.createElement('button')
-  likeBtn.textContent = 'Like'
-  likeBtn.classList.add('likeBtn')
+		// let likeBtn = document.createElement('button')
+		// likeBtn.textContent = 'Like'
+		// likeBtn.classList.add('likeBtn')
 
-		 likeBtn.addEventListener('click', function() {
-				likeBtn.classList.toggle('liked')
-   if(likeBtn.innerHTML === 'Like') {
-    likeBtn.innerHTML = 'Liked'
-   }
-   else if(likeBtn.innerHTML === 'Liked') {
-    likeBtn.innerHTML = 'Like'
-   }
- })
-		//////
+		// likeBtn.addEventListener('click', function () {
+		// 	likeBtn.classList.toggle('liked')
+		// 	if (likeBtn.innerHTML === 'Like') {
+		// 		likeBtn.innerHTML = 'Liked'
+		// 	}
+		// 	else if (likeBtn.innerHTML === 'Liked') {
+		// 		likeBtn.innerHTML = 'Like'
+		// 	}
+		// })
 
 		let recipeBtn = document.createElement('button')
 		recipeBtn.textContent = 'View Recipe'
 		recipeBtn.classList.add('recipeBtn')
 		// Ivas code finish 
-
 		let recipeUrl = recipe.url
-
 		// Get the modal
 		var modal = document.getElementById("myModal");
-
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close");
-
 		// When the user clicks on the button, open the modal
 		recipeBtn.addEventListener("click", function () {
-
 			//tenor
-			let queryURL = `https://g.tenor.com/v1/search?q=${title.textContent}`+
-			`&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
+			let queryURL = `https://g.tenor.com/v1/search?q=${gifDis}` +
+				`&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
 			//make an https request fetch will return promise.
 			fetch(queryURL)
 				.then(response => response.json())
@@ -114,9 +105,8 @@ function getApi(food) {
 					let randomGif = results[randomNumber].media[0].gif.url
 					$(".gifDiv").empty()
 					$(".gifDiv").append(`
-				<a class="visit-recipe btn btn-info col-3" href="${recipeUrl}">Visit recipe site</a>
-				<img class="gif col-6" src="${randomGif}"></img>
-				<a class="add-favourite btn btn-info col-3">Add to favourites</a>
+				<img class="gif row" src="${randomGif}"></img>
+				<a class="visit-recipe btn btn-info row" href="${recipeUrl}">Visit recipe: ${title.textContent}</a>
 				`)
 				})
 			let recipePreview = $(".recipe-preview")
@@ -124,51 +114,24 @@ function getApi(food) {
 			modal.style.display = "block";
 			$(".gif")
 		})
-
 		// When the user clicks on <span> (x), close the modal
 		$(span).on("click", function () {
 			modal.style.display = "none";
 		})
-
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function (event) {
 			if (event.target == modal) {
 				modal.style.display = "none";
 			}
 		}
-		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer,likeBtn, recipeBtn)
+		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer,
+			 // likeBtn, 
+			 recipeBtn)
 		$("#food-container").prepend(singleRecipeDiv)
 		// Ivas code finish
 		input.value = ''
 	}
 }
-
-
-// Get the modal2
-var modal2 = document.getElementById("favourite-recipes");
-
-// Get the <span> element that closes the modal2
-var span2 = document.getElementsByClassName("close2");
-
-// Get favourite button
-var favouriteBtn = document.getElementsByClassName("favourite-btn")
-
-// // Get recipes div
-// var recipesDiv = document.gete 
-
-// When the user clicks on the button, open the modal2
-$(favouriteBtn).on("click", function () {
-	if (localStorage.length === 0) {
-		$(".recipesDiv").empty()
-		$(".recipesDiv").append(`<p>No recipes saved yet</p>`)
-	}
-	modal2.style.display = "block";
-})
-
-// When the user clicks on <span> (x), close the modal2
-$(span2).on("click", function () {
-	modal2.style.display = "none";
-})
 
 // Add dark mode
 
@@ -181,6 +144,7 @@ let logo = document.querySelector('.logo')
 
 //checks localSorage
 let darkOn = localStorage.getItem('darkOn')
+
 
 // allows user to stay in dark or light mode if choosen in previous site visit
 if(darkOn === 'enabled') {
@@ -243,8 +207,24 @@ let modetheme = $('.checkbox').click(function(){
 	
 	if($('input.checkbox').is(':checked')){
 		$('.theme').attr('href', './assets/css/dark.css');
+=======
+if (darkOn === 'enabled') {
+	body.classList.add('dark')
+	localStorage.setItem('darkOn', 'enabled')
+}
+
+darkBtn.addEventListener('click', function () {
+	darkOn = localStorage.getItem('darkOn')
+
+	if (darkOn !== 'enabled') {
+		console.log('dark on');
+		body.classList.add('dark')
+		darkBtn.style.color = 'white'
+		localStorage.setItem('darkOn', 'enabled')
 	} else {
-		$('.theme').attr('href', './assets/css/light.css');
+		body.classList.remove('dark')
+		darkBtn.style.color = 'black'
+		localStorage.setItem('darkOn', null)
 	}
 });
 */
@@ -263,4 +243,6 @@ let modetheme = $('.checkbox').click(function(){
 	// 	</div>
 	// 	</div>
 	// `
+})
+
 
