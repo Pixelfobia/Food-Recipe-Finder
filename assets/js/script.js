@@ -171,44 +171,71 @@ $(span2).on("click", function () {
 })
 
 // Add dark mode
-let body = document.querySelector('body')
-//let darkBtn = document.querySelector('.fas')
-let checkbox = document.querySelector('.checkbox')
-let header = document.querySelector('header h1')
 
+//checks localSorage
+let body = document.querySelector('body')
+let darkBtn = document.querySelector('.fas')
+let lightBtn = document.querySelector('.fa')
+let header = document.querySelector('header h1')
+let logo = document.querySelector('.logo')
 
 //checks localSorage
 let darkOn = localStorage.getItem('darkOn')
 
 // allows user to stay in dark or light mode if choosen in previous site visit
 if(darkOn === 'enabled') {
- console.log('checked');
  body.classList.add('dark')
- header.style.color = 'white'
+	header.style.color = 'white'
+	//darkBtn.style.color = 'white'
+	lightBtn.style.visibility = 'visible'
+	lightBtn.style.color = 'aliceblue'
+	darkBtn.classList.add('visibility')
  localStorage.setItem('darkOn','enabled')
 }else{
  body.classList.remove('dark')
  header.style.color = 'darkgray'
+	lightBtn.style.visibility = 'hidden'
+	darkBtn.style.color = 'darkgray'
  localStorage.setItem('darkOn',null)
 }
 
-checkbox.addEventListener('click',function() {
- // checks and gets from localStorage
+darkBtn.addEventListener('click',function(e) {
+	e.preventDefault()
+	 // checks and gets from localStorage
  darkOn = localStorage.getItem('darkOn')
 
  if(darkOn !== 'enabled') {
-  console.log('checked');
+  console.log('dark on');
   body.classList.add('dark')
-  header.style.color = 'white'
+		header.style.color = 'white'
+  //darkBtn.style.color = 'white'
+		darkBtn.classList.add('visibility')
+		lightBtn.style.visibility = 'visible'
+		lightBtn.style.color = 'aliceblue'
+		logo.style.color = 'white'
   localStorage.setItem('darkOn','enabled')
-  return
- }else{
-  console.log('unchecked');
-  body.classList.remove('dark')
-  header.style.color = 'darkgray'
-  localStorage.setItem('darkOn',null)
  }
+
 })
+
+lightBtn.addEventListener('click',function(e) {
+	e.preventDefault()
+
+	 // checks and gets from localStorage
+ darkOn = localStorage.getItem('darkOn')
+
+	if(darkOn == 'enabled') {
+	 body.classList.remove('dark')
+			header.style.color = 'darkgray'
+			darkBtn.classList.remove('visibility')
+   darkBtn.style.color = 'darkgray'
+			lightBtn.style.visiility = 'hidden'
+   localStorage.setItem('darkOn',null)
+	}
+})
+
+
+
 
 /*
 // Toggle Switch
