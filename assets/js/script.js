@@ -14,16 +14,17 @@ searchButton.addEventListener("click", (event) => {
 	sendApiRequest()
 
 })
-var userInput = ""
+var gifDis = ""
 //fetch data from the API
 async function sendApiRequest() {
 	let userInput = document.querySelector("#search-food").value
+	gifDis = userInput
 	let appId = "610e31e3"
 	let appKey = "9ccc32eb1e19081d0c574bf4082402cf"
 	let response = await fetch(`https://api.edamam.com/search?app_id=${appId}&random=true&app_key=${appKey}&q=${userInput}`);
 	let food = await response.json()
 	getApi(food)
-	return userInput
+	return gifDis
 }
 
 function getApi(food) {
@@ -92,7 +93,7 @@ function getApi(food) {
 		// When the user clicks on the button, open the modal
 		recipeBtn.addEventListener("click", function () {
 			//tenor
-			let queryURL = `https://g.tenor.com/v1/search?q=${title.textContent}` +
+			let queryURL = `https://g.tenor.com/v1/search?q=${gifDis}` +
 				`&client_key=my_test_app&key=LIVDSRZULELA&limit=8`
 			//make an https request fetch will return promise.
 			fetch(queryURL)
