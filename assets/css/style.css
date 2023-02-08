@@ -211,6 +211,11 @@ h4 {
  background-color: rgb(87, 83, 83); 
 }
 
+.visibility {
+	visibility: hidden;
+}
+
+
 /* food-container styling finish */
 
 /* The Modal (background) */

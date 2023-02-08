@@ -134,11 +134,80 @@ function getApi(food) {
 }
 
 // Add dark mode
+
+//checks localSorage
 let body = document.querySelector('body')
 let darkBtn = document.querySelector('.fas')
+let lightBtn = document.querySelector('.fa')
+let header = document.querySelector('header h1')
+let logo = document.querySelector('.logo')
 
+//checks localSorage
 let darkOn = localStorage.getItem('darkOn')
 
+
+// allows user to stay in dark or light mode if choosen in previous site visit
+if(darkOn === 'enabled') {
+ body.classList.add('dark')
+	header.style.color = 'white'
+	//darkBtn.style.color = 'white'
+	lightBtn.style.visibility = 'visible'
+	lightBtn.style.color = 'aliceblue'
+	darkBtn.classList.add('visibility')
+ localStorage.setItem('darkOn','enabled')
+}else{
+ body.classList.remove('dark')
+ header.style.color = 'darkgray'
+	lightBtn.style.visibility = 'hidden'
+	darkBtn.style.color = 'darkgray'
+ localStorage.setItem('darkOn',null)
+}
+
+darkBtn.addEventListener('click',function(e) {
+	e.preventDefault()
+	 // checks and gets from localStorage
+ darkOn = localStorage.getItem('darkOn')
+
+ if(darkOn !== 'enabled') {
+  console.log('dark on');
+  body.classList.add('dark')
+		header.style.color = 'white'
+  //darkBtn.style.color = 'white'
+		darkBtn.classList.add('visibility')
+		lightBtn.style.visibility = 'visible'
+		lightBtn.style.color = 'aliceblue'
+		logo.style.color = 'white'
+  localStorage.setItem('darkOn','enabled')
+ }
+
+})
+
+lightBtn.addEventListener('click',function(e) {
+	e.preventDefault()
+
+	 // checks and gets from localStorage
+ darkOn = localStorage.getItem('darkOn')
+
+	if(darkOn == 'enabled') {
+	 body.classList.remove('dark')
+			header.style.color = 'darkgray'
+			darkBtn.classList.remove('visibility')
+   darkBtn.style.color = 'darkgray'
+			lightBtn.style.visiility = 'hidden'
+   localStorage.setItem('darkOn',null)
+	}
+})
+
+
+
+
+/*
+// Toggle Switch
+let modetheme = $('.checkbox').click(function(){
+	
+	if($('input.checkbox').is(':checked')){
+		$('.theme').attr('href', './assets/css/dark.css');
+=======
 if (darkOn === 'enabled') {
 	body.classList.add('dark')
 	localStorage.setItem('darkOn', 'enabled')
@@ -157,5 +226,23 @@ darkBtn.addEventListener('click', function () {
 		darkBtn.style.color = 'black'
 		localStorage.setItem('darkOn', null)
 	}
+});
+*/
+
+
+
+	// document.querySelector("#foodContent").innerHTML = `
+	// 	<div class="card" style="width: 18rem;">
+	// 	<div id="images">
+	// 	</div>
+	// 	<div class="card-body">
+	// 	<h5 class="card-title">${food.hits[0].recipe.label}</h5>
+	// 	<p class="card-text">Calories: ${food.hits[0].recipe.calories.toFixed(0)}</p>
+	// 	<p class="card-text">Cautions: ${food.hits[0].recipe.cautions[0]}</p>
+	// 	<a href="${food.hits[0].recipe.url}" class="btn btn-primary" target="_blank">Check recipe</a>
+	// 	</div>
+	// 	</div>
+	// `
 })
+
 
