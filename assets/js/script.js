@@ -172,30 +172,45 @@ $(span2).on("click", function () {
 
 // Add dark mode
 let body = document.querySelector('body')
-let darkBtn = document.querySelector('.fas')
+//let darkBtn = document.querySelector('.fas')
+let checkbox = document.querySelector('.checkbox')
+let header = document.querySelector('header h1')
 
+
+//checks localSorage
 let darkOn = localStorage.getItem('darkOn')
 
+// allows user to stay in dark or light mode if choosen in previous site visit
 if(darkOn === 'enabled') {
+ console.log('checked');
  body.classList.add('dark')
+ header.style.color = 'white'
  localStorage.setItem('darkOn','enabled')
+}else{
+ body.classList.remove('dark')
+ header.style.color = 'darkgray'
+ localStorage.setItem('darkOn',null)
 }
 
-darkBtn.addEventListener('click',function() {
+checkbox.addEventListener('click',function() {
+ // checks and gets from localStorage
  darkOn = localStorage.getItem('darkOn')
 
  if(darkOn !== 'enabled') {
-  console.log('dark on');
+  console.log('checked');
   body.classList.add('dark')
-  darkBtn.style.color = 'white'
+  header.style.color = 'white'
   localStorage.setItem('darkOn','enabled')
+  return
  }else{
-   body.classList.remove('dark')
-   darkBtn.style.color = 'black'
-   localStorage.setItem('darkOn',null)
+  console.log('unchecked');
+  body.classList.remove('dark')
+  header.style.color = 'darkgray'
+  localStorage.setItem('darkOn',null)
  }
 })
 
+/*
 // Toggle Switch
 let modetheme = $('.checkbox').click(function(){
 	
@@ -205,7 +220,7 @@ let modetheme = $('.checkbox').click(function(){
 		$('.theme').attr('href', './assets/css/light.css');
 	}
 });
-
+*/
 
 
 
