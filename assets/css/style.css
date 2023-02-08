@@ -5,7 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
 
 header h1 {
-	margin-top: 50px;
+	margin-top: 1px;
+	font-weight: 700;
+}
+.logo {
+	background-image: url('../images/foodFinder-logo.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 180px;
+	height: 120px;
+	margin: 0 auto;
+	padding: 0;
 }
 
 .input-group {
@@ -21,6 +31,80 @@ header h1 {
 	margin: 50px;
 }
 
+
+/* Sergio */
+/* Toggle Switch */
+/* The switch - the box around the slider */
+
+.modetheme {
+	margin-top: 20px;
+	padding-right: 42px;
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 /* food-container styling start */
 #food-container {
  margin: 0 auto;
@@ -82,6 +166,25 @@ h4 {
  font-family: 'Roboto Mono', monospace;
 }
 
+.likeBtn {
+ width: 30%;
+ padding: 8px;
+ margin: 5px;
+ position: absolute;
+ bottom: 25px;
+ left: 15px;
+ border-radius: 25px;
+ border: 2px solid orangered;
+ color: orangered;
+}
+
+.liked {
+ border: none;
+ padding: 10px;
+ background-color: orangered;
+ color: white;
+}
+
 .recipeBtn {
  width: 50%;
  padding: 10px;
@@ -104,6 +207,10 @@ h4 {
  font-weight: bold;
 }
 
+.dark {
+ background-color: rgb(87, 83, 83); 
+}
+
 /* food-container styling finish */
 
 /* The Modal (background) */
@@ -112,7 +219,7 @@ h4 {
 	/* Hidden by default */
 	position: fixed;
 	/* Stay in place */
-	z-index: 1;
+	z-index: 2;
 	/* Sit on top */
 	left: 0;
 	top: 0;
@@ -139,8 +246,30 @@ h4 {
 	/* Could be more or less, depending on screen size */
 }
 
+.modal2 {
+	display: none;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 30%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.modal2-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 100%;
+}
+
 /* The Close Button */
-.close {
+.close, .close2 {
 	color: #aaa;
 	float: right;
 	font-size: 28px;
@@ -148,7 +277,9 @@ h4 {
 }
 
 .close:hover,
-.close:focus {
+.close2:hover,
+.close:focus,
+.close2:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
@@ -169,4 +300,5 @@ h4 {
 	max-width: 400px;
 	height: auto;
 	max-height: 480px;
+
 }
