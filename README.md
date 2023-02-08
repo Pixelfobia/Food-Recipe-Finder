@@ -12,7 +12,7 @@
 * We decided to create something that will be both useful and funny
 * Something that we all need? Food!
 * Something that we never have enough? Laugh!
-* When the two powers combine, they summon Earth's greatest champion, FoofFinder!
+* When the two powers combine, they summon Earth's greatest champion, FoodFinder!
 
 ### While using fruits of our work
 * You can search food recipes found on [www.edamam.com](https://www.edamam.com/)
