@@ -3,13 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
 
 header {
- position: relative;
+	position: relative;
 }
 
 header h1 {
 	margin-top: 1px;
 	font-weight: 700;
 }
+
 .logo {
 	background-image: url('../images/foodFinder-logo.png');
 	background-repeat: no-repeat;
@@ -35,13 +36,13 @@ header h1 {
 
 /* social media div */
 #contact {
- position: absolute;
- right: 20px;
- top: 5px;
+	position: absolute;
+	right: 20px;
+	top: 5px;
 }
 
 #contact a {
- color: orangered;
+	color: orangered;
 	text-decoration: none;
 }
 
@@ -50,25 +51,23 @@ header h1 {
 }
 
 #search-food {
- outline: none;
+	outline: none;
 }
 
 /* find recipe */
 .input-group-text {
- border-top-left-radius: 25px;
- border-bottom-left-radius: 25px;
- color: #2196F3;
- padding: 0 3%;
- font-weight: 600;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	color: #2196F3;
+	padding: 0 3%;
+	font-weight: 600;
 }
 
 /* search button */
 .btn-info {
- background-color: #2196F3;
- font-weight: 600;
- width: 140px;
- border-top-right-radius: 25px;
- border-bottom-right-radius: 25px;
+	font-weight: 600;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
 }
 
 .btn-info:hover {
@@ -88,171 +87,173 @@ header h1 {
 	justify-content: end;
 	align-items: center;
 }
+
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
 }
 
 /* Hide default HTML checkbox */
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+	opacity: 0;
+	width: 0;
+	height: 0;
 }
 
 /* The slider */
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
+input:checked+.slider {
+	background-color: #2196F3;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+input:focus+.slider {
+	box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+input:checked+.slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+	border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+	border-radius: 50%;
 }
+
 /* food-container styling start */
 #food-container {
- margin: 20px auto;
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
+	margin: 20px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .single {
- position: relative;
- padding: 10px;
- display: flex;
- flex-direction: column;
- margin: 10px;
- min-width: 350px;
- max-width: 350px;
- height: 510px;
- background-color: aliceblue;
- border-radius: 5px;
- overflow: hidden;
+	position: relative;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+	min-width: 350px;
+	max-width: 350px;
+	height: 510px;
+	background-color: aliceblue;
+	border-radius: 5px;
+	overflow: hidden;
 }
 
 .single img {
-  transition: transform .5s ease;
+	transition: transform .5s ease;
 }
 
 .single:hover img {
- overflow: hidden;
- transition: 0.3s;
- transform: scale(1.1)
+	overflow: hidden;
+	transition: 0.3s;
+	transform: scale(1.1)
 }
 
 .imgContainer {
- height: 200px;
- overflow: hidden;
+	height: 200px;
+	overflow: hidden;
 }
 
 img {
- width: 100%;
- height: 200px;
+	width: 100%;
+	height: 200px;
 }
 
 .titleDiv {
- height: 90px;
- padding: 5px;
+	height: 90px;
+	padding: 5px;
 }
 
 h4 {
- text-align: center;
- margin: 10px 0;
- font-family: 'Itim', cursive;
+	text-align: center;
+	margin: 10px 0;
+	font-family: 'Itim', cursive;
 }
 
 .dataContainer {
- padding: 5px;
- font-family: 'Roboto Mono', monospace;
+	padding: 5px;
+	font-family: 'Roboto Mono', monospace;
 }
 
 .likeBtn {
- width: 30%;
- padding: 8px;
- margin: 5px;
- position: absolute;
- bottom: 10px;
- left: 10px;
- border-radius: 25px;
- border: 2px solid orangered;
- color: orangered;
+	width: 30%;
+	padding: 8px;
+	margin: 5px;
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	border-radius: 25px;
+	border: 2px solid orangered;
+	color: orangered;
 }
 
 .liked {
- border: none;
- padding: 10px;
- background-color: orangered;
- color: white;
+	border: none;
+	padding: 10px;
+	background-color: orangered;
+	color: white;
 }
 
 .recipeBtn {
- width: 50%;
- padding: 10px;
- margin: 5px;
- position: absolute;
- bottom: 10px;
- right: 10px;
- border-radius: 25px;
- background-color: rgb(40, 146, 240);
- border: none;
- color: white;
+	width: 50%;
+	padding: 10px;
+	margin: 5px;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	border-radius: 25px;
+	border: none;
+	color: white;
 }
 
 .recipeBtn:hover {
- background-color: white;
- border: 2px solid  rgb(92, 173, 243);
- color:  rgb(92, 173, 243);
- transform: scale(1.05);
- transition: 0.3s;
- font-weight: bold;
+	background-color: white;
+	border: 2px solid rgb(92, 173, 243);
+	color: rgb(92, 173, 243);
+	transform: scale(1.05);
+	transition: 0.3s;
+	font-weight: bold;
 }
+
 /* food-container styling finish */
 
 
 /*dark mode styling */
 .dark {
- background-color: rgb(87, 83, 83); 
+	background-color: rgb(87, 83, 83);
 }
 
 .visibility {
@@ -325,4 +326,8 @@ h4 {
 	max-width: 400px;
 	height: auto;
 	max-height: 480px;
+}
+
+.visit-recipe {
+	border-radius: 25px;
 }
