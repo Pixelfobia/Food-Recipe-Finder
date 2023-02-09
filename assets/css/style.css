@@ -42,6 +42,11 @@ header h1 {
 
 #contact a {
  color: orangered;
+	text-decoration: none;
+}
+
+#contact a:hover {
+	color: purple;
 }
 
 #search-food {
@@ -61,7 +66,7 @@ header h1 {
 .btn-info {
  background-color: #2196F3;
  font-weight: 600;
- width: 150px;
+ width: 140px;
  border-top-right-radius: 25px;
  border-bottom-right-radius: 25px;
 }
@@ -146,7 +151,7 @@ input:checked + .slider:before {
 }
 /* food-container styling start */
 #food-container {
- margin: 0 auto;
+ margin: 20px auto;
  display: flex;
  flex-wrap: wrap;
  justify-content: center;
@@ -160,7 +165,7 @@ input:checked + .slider:before {
  margin: 10px;
  min-width: 350px;
  max-width: 350px;
- height: 500px;
+ height: 510px;
  background-color: aliceblue;
  border-radius: 5px;
  overflow: hidden;
@@ -176,7 +181,6 @@ input:checked + .slider:before {
  transform: scale(1.1)
 }
 
-
 .imgContainer {
  height: 200px;
  overflow: hidden;
@@ -188,14 +192,13 @@ img {
 }
 
 .titleDiv {
-
  height: 90px;
  padding: 5px;
 }
 
 h4 {
  text-align: center;
- margin: 15px 0;
+ margin: 10px 0;
  font-family: 'Itim', cursive;
 }
 
@@ -209,8 +212,8 @@ h4 {
  padding: 8px;
  margin: 5px;
  position: absolute;
- bottom: 25px;
- left: 15px;
+ bottom: 10px;
+ left: 10px;
  border-radius: 25px;
  border: 2px solid orangered;
  color: orangered;
@@ -228,8 +231,8 @@ h4 {
  padding: 10px;
  margin: 5px;
  position: absolute;
- bottom: 25px;
- right: 35px;
+ bottom: 10px;
+ right: 10px;
  border-radius: 25px;
  background-color: rgb(40, 146, 240);
  border: none;
