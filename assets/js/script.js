@@ -28,14 +28,14 @@ async function sendApiRequest() {
 }
 
 function getApi(food) {
-
-
-	// Iva's Code start
 	let recipeContainer = document.getElementById('food-container')
 	recipeContainer.innerHTML = ''
+	// copy the array of recipes and create elements to display each one
 	let recipeArr = [...food.hits]
 	for (let i = 0; i < recipeArr.length; i++) {
 		let recipe = recipeArr[i].recipe
+
+		// create div for each recipe
 		let singleRecipeDiv = document.createElement('div')
 		singleRecipeDiv.classList.add('single')
 
@@ -66,20 +66,21 @@ function getApi(food) {
 		calories.textContent = "Calories: " + recipe.calories.toFixed()
 
 		dataContainer.append(type, dietLabel, calories)
+   
+		 let likeBtn = document.createElement('button')
+		 likeBtn.textContent = 'Like'
+		 likeBtn.classList.add('likeBtn')
 
-		// let likeBtn = document.createElement('button')
-		// likeBtn.textContent = 'Like'
-		// likeBtn.classList.add('likeBtn')
-
-		// likeBtn.addEventListener('click', function () {
-		// 	likeBtn.classList.toggle('liked')
-		// 	if (likeBtn.innerHTML === 'Like') {
-		// 		likeBtn.innerHTML = 'Liked'
-		// 	}
-		// 	else if (likeBtn.innerHTML === 'Liked') {
-		// 		likeBtn.innerHTML = 'Like'
-		// 	}
-		// })
+  // functionality to like button
+		 likeBtn.addEventListener('click', function () {
+		 	likeBtn.classList.toggle('liked')
+		 	if (likeBtn.innerHTML === 'Like') {
+		 		likeBtn.innerHTML = 'Liked'
+		 	}
+		 	else if (likeBtn.innerHTML === 'Liked') {
+		 		likeBtn.innerHTML = 'Like'
+		 	}
+		 })
 
 		let recipeBtn = document.createElement('button')
 		recipeBtn.textContent = 'View Recipe'
@@ -125,10 +126,9 @@ function getApi(food) {
 			}
 		}
 		singleRecipeDiv.append(imgContainer, titleDiv, dataContainer,
-			 // likeBtn, 
+			  likeBtn, 
 			 recipeBtn)
 		$("#food-container").prepend(singleRecipeDiv)
-		// Ivas code finish
 		input.value = ''
 	}
 }
@@ -152,7 +152,7 @@ if(darkOn === 'enabled') {
 	header.style.color = 'white'
 	//darkBtn.style.color = 'white'
 	lightBtn.style.visibility = 'visible'
-	lightBtn.style.color = 'aliceblue'
+	lightBtn.style.color = 'white'
 	darkBtn.classList.add('visibility')
  localStorage.setItem('darkOn','enabled')
 }else{
@@ -175,7 +175,7 @@ darkBtn.addEventListener('click',function(e) {
   //darkBtn.style.color = 'white'
 		darkBtn.classList.add('visibility')
 		lightBtn.style.visibility = 'visible'
-		lightBtn.style.color = 'aliceblue'
+		lightBtn.style.color = 'white'
 		logo.style.color = 'white'
   localStorage.setItem('darkOn','enabled')
  }
