@@ -84,7 +84,7 @@ function getApi(food) {
 
 		let recipeBtn = document.createElement('button')
 		recipeBtn.textContent = 'View Recipe'
-		recipeBtn.classList.add('recipeBtn')
+		recipeBtn.classList.add('recipeBtn', 'btn-info')
 		// Ivas code finish 
 		let recipeUrl = recipe.url
 		// Get the modal
