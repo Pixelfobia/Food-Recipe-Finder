@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
-
-
 @import url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
+
+header {
+ position: relative;
+}
 
 header h1 {
 	margin-top: 1px;
@@ -29,6 +31,43 @@ header h1 {
 
 .card {
 	margin: 50px;
+}
+
+/* social media div */
+#contact {
+ position: absolute;
+ right: 20px;
+ top: 5px;
+}
+
+#contact a {
+ color: orangered;
+}
+
+#search-food {
+ outline: none;
+}
+
+/* find recipe */
+.input-group-text {
+ border-top-left-radius: 25px;
+ border-bottom-left-radius: 25px;
+ color: #2196F3;
+ padding: 0 3%;
+ font-weight: 600;
+}
+
+/* search button */
+.btn-info {
+ background-color: #2196F3;
+ font-weight: 600;
+ width: 150px;
+ border-top-right-radius: 25px;
+ border-bottom-right-radius: 25px;
+}
+
+.btn-info:hover {
+	background-color: #0a69b8;
 }
 
 
@@ -161,7 +200,6 @@ h4 {
 }
 
 .dataContainer {
-
  padding: 5px;
  font-family: 'Roboto Mono', monospace;
 }
@@ -206,7 +244,10 @@ h4 {
  transition: 0.3s;
  font-weight: bold;
 }
+/* food-container styling finish */
 
+
+/*dark mode styling */
 .dark {
  background-color: rgb(87, 83, 83); 
 }
@@ -215,8 +256,6 @@ h4 {
 	visibility: hidden;
 }
 
-
-/* food-container styling finish */
 
 /* The Modal (background) */
 .modal {

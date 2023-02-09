@@ -28,11 +28,9 @@ async function sendApiRequest() {
 }
 
 function getApi(food) {
-
-
-	// Iva's Code start
 	let recipeContainer = document.getElementById('food-container')
 	recipeContainer.innerHTML = ''
+	// copy the array of recipes and create elements to display each one
 	let recipeArr = [...food.hits]
 	for (let i = 0; i < recipeArr.length; i++) {
 		let recipe = recipeArr[i].recipe
@@ -152,7 +150,7 @@ if(darkOn === 'enabled') {
 	header.style.color = 'white'
 	//darkBtn.style.color = 'white'
 	lightBtn.style.visibility = 'visible'
-	lightBtn.style.color = 'aliceblue'
+	lightBtn.style.color = 'white'
 	darkBtn.classList.add('visibility')
  localStorage.setItem('darkOn','enabled')
 }else{
@@ -175,7 +173,7 @@ darkBtn.addEventListener('click',function(e) {
   //darkBtn.style.color = 'white'
 		darkBtn.classList.add('visibility')
 		lightBtn.style.visibility = 'visible'
-		lightBtn.style.color = 'aliceblue'
+		lightBtn.style.color = 'white'
 		logo.style.color = 'white'
   localStorage.setItem('darkOn','enabled')
  }
